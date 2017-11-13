@@ -1,6 +1,6 @@
 {
   "name": "filewatcher-webpack-plugin",
-  "version": "0.0.1",
+  "version": "1.0.1",
   "description": "Watch files / folders  not under webpack watch. Accepts glob pattern. Turbo powered by chokidar",
   "main": "index.js",
   "scripts": {
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/man27382210/watchFile-webpack-plugin.git"
+    "url": "git+https://github.com/sap9433/filewatcher-webpack-plugin"
   },
   "keywords": [
     "webpack",
@@ -17,10 +17,7 @@
   ],
   "author": "Saptarshi Chatterjee <saptarshichatterjee1@gmail.com>",
   "license": "MIT",
-  "bugs": {
-    "url": ""
-  },
-  "homepage": "",
+  "homepage": "https://github.com/sap9433/filewatcher-webpack-plugin",
   "devDependencies": {
     "chai": "^3.4.1",
     "mocha": "^2.3.4",
