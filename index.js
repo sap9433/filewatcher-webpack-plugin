@@ -5,48 +5,93 @@ function filewatcherPlugin(options) {
 }
 
 filewatcherPlugin.prototype.apply = function(compiler) {
-  var that = this;
+  const options = this.options;
   compiler.plugin('done', function(compilation) {
-    var watcher = chokidar.watch(that.options.watchFileRegex, {
-      persistent: that.options.persistance || true,
-      ignored: that.options.ignored || false,
-      ignoreInitial: that.options.ignoreInitial || false,
-      followSymlinks: that.options.followSymlinks || true,
-      cwd: that.options.cwd || '.',
-      disableGlobbing: that.options.disableGlobbing || false,
-      usePolling: that.options.usePolling || true,
-      interval: that.options.interval || 100,
-      binaryInterval: that.options.binaryInterval || 300,
-      alwaysStat: that.options.alwaysStat || false,
-      depth: that.options.depth || 99,
+    var watcher = chokidar.watch(options.watchFileRegex, {
+      persistent: options.persistance || true,
+      ignored: options.ignored || false,
+      ignoreInitial: options.ignoreInitial || false,
+      followSymlinks: options.followSymlinks || true,
+      cwd: options.cwd || '.',
+      disableGlobbing: options.disableGlobbing || false,
+      usePolling: options.usePolling || true,
+      interval: options.interval || 100,
+      binaryInterval: options.binaryInterval || 300,
+      alwaysStat: options.alwaysStat || false,
+      depth: options.depth || 99,
       awaitWriteFinish: {
-        stabilityThreshold: that.options.stabilityThreshold || 2000,
-        pollInterval: that.options.pollInterval || 100
+        stabilityThreshold: options.stabilityThreshold || 2000,
+        pollInterval: options.pollInterval || 100
       },
 
-      ignorePermissionErrors: that.options.ignorePermissionErrors || false,
-      atomic: that.options.atomic || true
+      ignorePermissionErrors: options.ignorePermissionErrors || false,
+      atomic: options.atomic || true
     });
 
     watcher
-      .on('add', path => null)
-      .on('change', function(path) {
-        console.log(`\n\n Compilation Started  after change of - ${path}\n\n`);
-        compiler.run(function(err) {
-          if (err) throw err;
-          watcher.close();
-        });
-        console.log(`\n\nComilation ended  for change of - ${path}\n\n`);
-      })
-      .on('unlink', path => console.log(`File ${path} has been removed`));
+      .on(
+        'add',
+        options.onAddCallback ||
+          function(path) {
+            return null;
+          }
+      )
+      .on(
+        'change',
+        options.onChangeCallback ||
+          function(path) {
+            console.log(`\n\n Compilation Started  after change of - ${path} \n\n`);
+            compiler.run(function(err) {
+              if (err) throw err;
+              watcher.close();
+            });
+            console.log(`\n\n Comilation ended  for change of - ${path} \n\n`);
+          }
+      )
+      .on(
+        'unlink',
+        options.onUnlinkCallback ||
+          function(path) {
+            console.log(`File ${path} has been removed`);
+          }
+      );
 
-    // More possible events.
     watcher
-      .on('addDir', path => console.log(`Directory ${path} has been added`))
-      .on('unlinkDir', path => console.log(`Directory ${path} has been removed`))
-      .on('error', error => console.log(`Watcher error: ${error}`))
-      .on('ready', () => console.log('Initial scan complete. Ready for changes'))
-      .on('raw', (event, path, details) => null);
+      .on(
+        'addDir',
+        options.onaddDirCallback ||
+          function(path) {
+            console.log(`Directory ${path} has been added`);
+          }
+      )
+      .on(
+        'unlinkDir',
+        options.unlinkDirCallback ||
+          function(path) {
+            console.log(`Directory ${path} has been removed`);
+          }
+      )
+      .on(
+        'error',
+        options.onErrorCallback ||
+          function(error) {
+            console.log(`Watcher error: ${error}`);
+          }
+      )
+      .on(
+        'ready',
+        options.onReadyCallback ||
+          function() {
+            console.log('Initial scan complete. Ready for changes');
+          }
+      )
+      .on(
+        'raw',
+        options.onRawCallback ||
+          function(event, path, details) {
+            return null;
+          }
+      );
   });
 };
 

@@ -4,7 +4,7 @@
 
 useage
 ```
-filewatcherPlugin = require("filewatcher-webpack-plugin");
+const filewatcherPlugin = require("filewatcher-webpack-plugin");
 ...
 plugins: [
         new filewatcherPlugin({watchFileRegex: ['../scriptFolder/**/*.js', '../stylesheets/**/*.css']})
