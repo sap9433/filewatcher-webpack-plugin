@@ -45,7 +45,7 @@ filewatcherPlugin.prototype.apply = function(compiler) {
               if (err) throw err;
               watcher.close();
             });
-            console.log(`\n\n Comilation ended  for change of - ${path} \n\n`);
+            console.log(`\n\n Compilation ended  for change of - ${path} \n\n`);
           }
       )
       .on(
@@ -59,7 +59,7 @@ filewatcherPlugin.prototype.apply = function(compiler) {
     watcher
       .on(
         'addDir',
-        options.onaddDirCallback ||
+        options.onAddDirCallback ||
           function(path) {
             console.log(`Directory ${path} has been added`);
           }
