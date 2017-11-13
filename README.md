@@ -1,13 +1,13 @@
 [![Build Status](https://travis-ci.org/sap9433/filewatcher-webpack-plugin.svg?branch=master)](https://travis-ci.org/sap9433/filewatcher-webpack-plugin)
-# watchFile-webpack-plugin (AustinJs)
+# watchFile-webpack-plugin ([AustinJs](https://www.npmjs.com/package/filewatcher-webpack-plugin))
 [![forthebadge](http://forthebadge.com/images/badges/built-with-swag.svg)](http://forthebadge.com) [![forthebadge](http://forthebadge.com/images/badges/for-you.svg)](http://forthebadge.com)
 
 
  
- > Watch files / folders not under webpack watch. Accepts glob pattern. Turbo powered by [chokidar](https://github.com/paulmillr/chokidar)
+ > A webpack plugin to Watch files / folders not under webpack watch. Accepts glob pattern. Turbo powered by [chokidar](https://github.com/paulmillr/chokidar)
 
 
- #### Usage :snowflake: :sunny: :zap:
+ #### [Usage](https://www.npmjs.com/package/filewatcher-webpack-plugin) :snowflake: :sunny:
 
  Most simplistic use of this plugin would be using the following in your webpack.config.js file -
 
