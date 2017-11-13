@@ -112,5 +112,3 @@ plugins: [
 ###### Support .
 
 > Here I'm . [This is me](https://www.linkedin.com/in/saptarshi-chatterjee-55a22613) . Mail me  with the error details (saptarshichatterjee1@gmail.com), And I generally reply back within 24 hours. 
-
-<img src="./saptarshi.jpg" width="300" height="400" /> 
