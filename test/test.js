@@ -15,13 +15,13 @@ describe('watchFile-webpack-plugin', function(){
 		fs.writeFileSync(path.join(__dirname, "/fixtures/components/local-hello-world.rt"), "<div><h3>Hello World From Local...!{this.props.name}</h3></div>");
 		var compiler = webpack(config);
 		var server = new webpackDevServer(compiler);
-		server.listen(8080);
-		fs.writeFileSync(path.join(__dirname, "/fixtures/components/local-hello-world.rt"), "<div><h3>Hello World From Change</h3></div>");
-		fetch('http://localhost:8080/js/index.js')
+		server.listen(1024);
+		fs.writeFileSync(path.join(__dirname, "/fixtures/components/local-hello-world.rt"), "<div><h3>Hello World From Austin</h3></div>");
+		fetch('http://localhost:1024/js/index.js')
 		.then(function(res) {
 			return res.text();
 		}).then(function(body) {
-			expect(body.indexOf("Hello World From Change")).to.not.equal(-1);
+			expect(body.indexOf("Hello World From Austin")).to.not.equal(-1);
 			done();
 		});
 	});
