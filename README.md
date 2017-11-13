@@ -7,7 +7,7 @@
  > Watch files / folders not under webpack watch. Accepts glob pattern. Turbo powered by [chokidar](https://github.com/paulmillr/chokidar)
 
 
- #### Usage
+ #### Usage :snowflake: :sunny: :zap:
 
  Most simplistic use of this plugin would be using the following in your webpack.config.js file -
 
@@ -25,7 +25,7 @@ plugins: [
 ---------------------
 
 
-#### Why do we even need such a plugin ?
+#### Why do we even need such a plugin ? :no_mouth: :star:
 
 Thanks for your focus . It's a good question . Firstly there already exists [a few](https://www.npmjs.com/package/file-watcher-webpack-plugin) plugins [for this](https://github.com/Fridus/webpack-watch-files-plugin) . Which suggests there is surely a need for this functionality . Let me explain when - 
 
@@ -37,11 +37,11 @@ All of the existing plugin had limitations , i.e. they either doesn't listen to 
 
 ---------------------
 
-#### I'm feeling super geeky and tell me more about how can I play with this plugin , a.k.a Supported options
+#### I'm feeling super geeky and tell me more about how can I play with this plugin , a.k.a Supported options :bulb: :electric_plug:
 
 > All the following options are basically chokidar API options . So please refer [this](https://github.com/paulmillr/chokidar#api) for the original source .
 
-###### API Options, related to files / path to watch ignore etc.
+###### API Options, related to files / path to watch ignore etc. :shower: :hammer:
 
 Supported Options | Details
 ------------ | -------------
@@ -55,7 +55,7 @@ disableGlobbing (default: false) | If set to true then the strings passed to .wa
 
 ----
 
-###### API Options, related to Performance. 
+###### API Options, related to Performance.  :money_with_wings: :flashlight:
 
 Supported Options | Details
 ------------ | -------------
@@ -69,14 +69,14 @@ awaitWriteFinish.pollInterval (default: 100) | File size polling interval.
 
 -----
 
-###### API Options, related to Errors. 
+###### API Options, related to Errors. :mega: :key:
 Supported Options | Details
 ------------ | -------------
 ignorePermissionErrors (default: false) | Indicates whether to watch files that don't have read permissions if possible. If watching fails due to EPERM or EACCES with this set to true, the errors will be suppressed silently.
 atomic (default: true if useFsEvents and usePolling are false) | Automatically filters out artifacts that occur when using editors that use "atomic writes" instead of writing directly to the source file. If a file is re-added within 100 ms of being deleted, Chokidar emits a change event rather than unlink then add. If the default of 100 ms does not work well for you, you can override it by setting atomic to a custom value, in milliseconds.
 
 
-###### API Options, related to Performance. 
+###### API Options, related to Callbacks.  :basketball: :golf:
 
 > With great power comes great responsibility. If you are trying to override compilation stages , please [read this](https://github.com/webpack/docs/wiki/how-to-write-a-plugin) to avoid breaking stuff. 
 <img src="./with-great-power-comes-great-responsibility-spider-man-super-powers-abilities-voltaire-quote.jpg" width="400" height="300" /> 
@@ -92,7 +92,7 @@ onRawCallback | Must be a function . Callback to be executed when a raw event is
 onErrorCallback | Must be a function . Callback to be executed when watcher thows an error . Defaults to ``` function(error) { console.log(`Watcher error: ${error}`);} ```
 
 
-###### Advance use example 
+###### Advance use example :helicopter: :airplane:
 
 At the starting we have shown the very basic use of `filewatcher-webpack-plugin` . Now as we are powered with the above api options lets use some of them to override the default
 
@@ -112,6 +112,6 @@ plugins: [
 
 ``` 
 
-###### Support .
+###### Support . :snowboarder: :spades:
 
-> Here I'm . [This is me](https://www.linkedin.com/in/saptarshi-chatterjee-55a22613) . Mail me if you see a problem (saptarshichatterjee1@gmail.com), And I generally reply back within 24 hours. 
+> Here I'm . [This is me](https://www.linkedin.com/in/saptarshi-chatterjee-55a22613) . Mail me if you see a problem (saptarshichatterjee1@gmail.com), and I generally reply back within 24 hours. 
