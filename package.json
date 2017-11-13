@@ -1,6 +1,6 @@
 {
   "name": "filewatcher-webpack-plugin",
-  "version": "1.1.2",
+  "version": "1.1.3",
   "description": "Watch files / folders not under webpack watch. Accepts glob pattern. Turbo powered by chokidar",
   "main": "index.js",
   "scripts": {

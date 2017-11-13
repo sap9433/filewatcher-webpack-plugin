@@ -1,5 +1,5 @@
 [![Build Status](https://travis-ci.org/sap9433/filewatcher-webpack-plugin.svg?branch=master)](https://travis-ci.org/sap9433/filewatcher-webpack-plugin)
-# watchFile-webpack-plugin
+# watchFile-webpack-plugin (AustinJs)
 [![forthebadge](http://forthebadge.com/images/badges/built-with-swag.svg)](http://forthebadge.com) [![forthebadge](http://forthebadge.com/images/badges/for-you.svg)](http://forthebadge.com)
 
 
