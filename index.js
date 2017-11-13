@@ -1,13 +1,12 @@
-var chokidar = require('chokidar');
+const chokidar = require('chokidar');
 
-function watchFilePlugin(options) {
+function filewatcherPlugin(options) {
   this.options = options;
 }
 
-watchFilePlugin.prototype.apply = function(compiler) {
+filewatcherPlugin.prototype.apply = function(compiler) {
   var that = this;
   compiler.plugin('done', function(compilation) {
-
     var watcher = chokidar.watch(that.options.watchFileRegex, {
       persistent: that.options.persistance || true,
       ignored: that.options.ignored || false,
@@ -26,18 +25,18 @@ watchFilePlugin.prototype.apply = function(compiler) {
       },
 
       ignorePermissionErrors: that.options.ignorePermissionErrors || false,
-      atomic: that.options.atomic || true // or a custom 'atomicity delay', in milliseconds (default 100)
+      atomic: that.options.atomic || true
     });
 
     watcher
-      .on('add', path => console.log(`File ${path} has been added`))
+      .on('add', path => null)
       .on('change', function(path) {
-        console.log("started  - "+ path);
+        console.log(`\n\n Compilation Started  after change of - ${path}\n\n`);
         compiler.run(function(err) {
           if (err) throw err;
-          monitor.stop();
+          watcher.close();
         });
-        console.log("End - "+ path);
+        console.log(`\n\nComilation ended  for change of - ${path}\n\n`);
       })
       .on('unlink', path => console.log(`File ${path} has been removed`));
 
@@ -47,10 +46,8 @@ watchFilePlugin.prototype.apply = function(compiler) {
       .on('unlinkDir', path => console.log(`Directory ${path} has been removed`))
       .on('error', error => console.log(`Watcher error: ${error}`))
       .on('ready', () => console.log('Initial scan complete. Ready for changes'))
-      .on('raw', (event, path, details) => {
-        console.log('Raw event info:', event, path, details);
-      });
+      .on('raw', (event, path, details) => null);
   });
 };
 
-module.exports = watchFilePlugin;
+module.exports = filewatcherPlugin;
