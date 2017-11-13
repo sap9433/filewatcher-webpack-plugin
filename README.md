@@ -1,5 +1,8 @@
-[![Build Status](https://travis-ci.org/man27382210/watchFile-webpack-plugin.svg?branch=master)](https://travis-ci.org/man27382210/watchFile-webpack-plugin)
+[![Build Status](https://travis-ci.org/sap9433/filewatcher-webpack-plugin.svg?branch=master)](https://travis-ci.org/sap9433/filewatcher-webpack-plugin)
 # watchFile-webpack-plugin
+[![forthebadge](http://forthebadge.com/images/badges/built-with-swag.svg)](http://forthebadge.com) [![forthebadge](http://forthebadge.com/images/badges/for-you.svg)](http://forthebadge.com)
+
+
  
  > Watch files / folders not under webpack watch. Accepts glob pattern. Turbo powered by [chokidar](https://github.com/paulmillr/chokidar)
 
@@ -111,4 +114,4 @@ plugins: [
 
 ###### Support .
 
-> Here I'm . [This is me](https://www.linkedin.com/in/saptarshi-chatterjee-55a22613) . Mail me  with the error details (saptarshichatterjee1@gmail.com), And I generally reply back within 24 hours. 
+> Here I'm . [This is me](https://www.linkedin.com/in/saptarshi-chatterjee-55a22613) . Mail me if you see a problem (saptarshichatterjee1@gmail.com), And I generally reply back within 24 hours. 
