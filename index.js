@@ -28,17 +28,18 @@ filewatcherPlugin.prototype.apply = function(compiler) {
       atomic: options.atomic || true
     });
 
+    const callbackContext = { compiler, watcher };
     watcher
       .on(
         'add',
-        options.onAddCallback ||
+        options.onAddCallback ? options.onAddCallback.bind(callbackContext) :
           function(path) {
             return null;
           }
       )
       .on(
         'change',
-        options.onChangeCallback ||
+        options.onChangeCallback ? options.onChangeCallback.bind(callbackContext) :
           function(path) {
             console.log(`\n\n Compilation Started  after change of - ${path} \n\n`);
             compiler.run(function(err) {
@@ -50,7 +51,7 @@ filewatcherPlugin.prototype.apply = function(compiler) {
       )
       .on(
         'unlink',
-        options.onUnlinkCallback ||
+        options.onUnlinkCallback ? options.onUnlinkCallback.bind(callbackContext) :
           function(path) {
             console.log(`File ${path} has been removed`);
           }
@@ -59,35 +60,35 @@ filewatcherPlugin.prototype.apply = function(compiler) {
     watcher
       .on(
         'addDir',
-        options.onAddDirCallback ||
+        options.onAddDirCallback ? options.onAddDirCallback.bind(callbackContext) :
           function(path) {
             console.log(`Directory ${path} has been added`);
           }
       )
       .on(
         'unlinkDir',
-        options.unlinkDirCallback ||
+        options.unlinkDirCallback ? options.unlinkDirCallback.bind(callbackContext) :
           function(path) {
             console.log(`Directory ${path} has been removed`);
           }
       )
       .on(
         'error',
-        options.onErrorCallback ||
+        options.onErrorCallback ? options.onErrorCallback.bind(callbackContext) :
           function(error) {
             console.log(`Watcher error: ${error}`);
           }
       )
       .on(
         'ready',
-        options.onReadyCallback ||
+        options.onReadyCallback ? options.onReadyCallback.bind(callbackContext) :
           function() {
             console.log('Initial scan complete. Ready for changes');
           }
       )
       .on(
         'raw',
-        options.onRawCallback ||
+        options.onRawCallback ? options.onRawCallback.bind(callbackContext) :
           function(event, path, details) {
             return null;
           }
