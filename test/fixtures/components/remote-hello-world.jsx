@@ -1,4 +1,4 @@
-var React = require('React/addons');
+var React = require('React');
 // var helloTemplate = require("./local-hello-world.rt");
 var helloTemplate = require("./remote-hello-world.ajs");
 var Hello = React.createClass({

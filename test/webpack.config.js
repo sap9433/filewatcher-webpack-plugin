@@ -3,6 +3,7 @@ var path = require("path"),
     webpack = require("webpack"),
     watchFilePlugin = require("../index.js");
 module.exports = {
+    mode: 'development',
     cache: true,
     entry: {
         index: path.join(__dirname,"./fixtures/index.jsx")
@@ -13,13 +14,16 @@ module.exports = {
         filename: 'js/[name].js'
     },
     module: {
-        loaders: [{
+        rules:[
+            {
             test: /\.ajs$/,
-            loaders: ["node-async-require-loader?preParser=rt&async=false"]
-        }, {
-            test: /\.jsx$/,
-            loaders: ["jsx-loader?insertPragma=React.DOM&harmony"]
-        }]
+            loader: ["node-async-require-loader?preParser=rt&async=false"]
+            },
+            {
+                test: /\.jsx$/,
+                loader: ["jsx-loader?insertPragma=React.DOM&harmony"]
+            }
+        ]
     },
     plugins: [
         new watchFilePlugin({watchFolder: path.join(__dirname ,"/fixtures/components/"), watchExtension: "rt"})
@@ -28,7 +32,7 @@ module.exports = {
 
     },
     resolve: {
-        extensions: ['', '.js', '.jsx', '.ajs', '.html'],
-        alias: {"React/addons": path.join(__dirname,"../node_modules/react/addons.js")}
+        extensions: ['.js', '.jsx', '.ajs', '.html'],
+        alias: {"React": path.join(__dirname,"../node_modules/react/index.js")}
     }
 };
